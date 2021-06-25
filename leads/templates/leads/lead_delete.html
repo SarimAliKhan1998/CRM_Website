@@ -7,15 +7,11 @@
     <title>CRM</title>
 </head>
 <body>
-    <h1>Lead Creation Form</h1>
+    <h4>Are you sure you want to delete all records of {{object}}</h4>
+    <form action="." method = "POST"> {% csrf_token %}
 
-    <form action="." method = "POST"> 
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="Submit" id="">
+        <input type="submit" value="Yes">
     </form>
-    <p>
-        <a href="/leads/">Go Back</a>
-    </p>
+    <p><a href="/leads/{{object.id}}">Go Back</a></p>
 </body>
 </html>

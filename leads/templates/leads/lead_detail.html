@@ -13,6 +13,16 @@
 
     {{object.first_name}} {{object.last_name}}
     <div>Age : {{object.age}}</div>
+    <div>This lead is handled by {{object.agent}}</div>
+    <p>
+        <a href="/leads/{{object.id}}/update/">
+        Click here to update lead details
+        </a>
+    </p>
+
+    <p>
+        <a href="/leads/{{object.id}}/delete/">Click here to delete all records of {{object}}</a>
+    </p>
     <p>
         <a href="/leads/">Go Back</a>
     </p>
