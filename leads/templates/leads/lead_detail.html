@@ -15,16 +15,16 @@
     <div>Age : {{object.age}}</div>
     <div>This lead is handled by {{object.agent}}</div>
     <p>
-        <a href="/leads/{{object.id}}/update/">
+        <a href="{% url 'leads:lead-update' object.pk %}">
         Click here to update lead details
         </a>
     </p>
 
     <p>
-        <a href="/leads/{{object.id}}/delete/">Click here to delete all records of {{object}}</a>
+        <a href="{% url 'leads:lead-delete' object.pk %}">Click here to delete all records of {{object}}</a>
     </p>
     <p>
-        <a href="/leads/">Go Back</a>
+        <a href="{% url 'leads:lead-list' %}">Go Back</a>
     </p>
 </body>
 </html>

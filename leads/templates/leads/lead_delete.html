@@ -12,6 +12,6 @@
 
         <input type="submit" value="Yes">
     </form>
-    <p><a href="/leads/{{object.id}}">Go Back</a></p>
+    <p><a href="{% url 'leads:lead-detail' object.pk %}">Go Back</a></p>
 </body>
 </html>

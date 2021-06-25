@@ -14,12 +14,16 @@
     </style>
 
     <p>Do you want to add a new lead?</p>
-    <p><a href="/leads/create/">Yes</a></p>
+    <p><a href="{% url 'leads:lead-create' %}">Yes</a></p>
     <h3>List of Available Leads</h3>
     <p>
         <ul>
             {%for lead in leads%}
-                <li class="leads"><a href="/leads/{{lead.pk}}/">{{lead.first_name}} {{lead.last_name}}</a></li>
+                <li class="leads">
+                    <a href="{% url 'leads:lead-detail' lead.pk %}">
+                        {{lead.first_name}} {{lead.last_name}}
+                    </a>
+                </li>
             {%endfor%}
         </ul>
     </p>

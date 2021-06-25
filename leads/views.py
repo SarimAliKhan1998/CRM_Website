@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Lead, Agent
 from .forms import LeadForm, LeadModelForm
+from django.urls import reverse
 
 # Create your views here.
 
@@ -35,36 +36,12 @@ def lead_create_view(request):
         form = LeadModelForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/leads")
+            return redirect(reverse("leads:lead-list", args=()))
     context = {
         "form" : form
     }
     return render(request, "leads/lead_create.html", context)
 
-
-# def lead_create_view(request):
-
-#     form = LeadForm()
-
-#     if request.method == "POST":
-#         form = LeadForm(request.POST)
-#         if form.is_valid():
-#             first_name_field = form.cleaned_data["first_name"]
-#             last_name_field = form.cleaned_data["last_name"]
-#             age_field = form.cleaned_data["age"]
-#             agent_field = Agent.objects.first()
-
-#             Lead.objects.create(
-#                                 first_name = first_name_field,
-#                                  last_name = last_name_field,
-#                                  age = age_field,
-#                                  agent = agent_field
-#                                  )
-#             return redirect("/leads")
-#     context = {
-#         "form" : form
-#     }
-#     return render(request, "leads/lead_create.html", context)
 
 
 
@@ -79,7 +56,7 @@ def lead_update_view(request, pk):
         if form.is_valid():
 
             form.save()
-            return redirect(f"/leads/{pk}")
+            return redirect(reverse("leads:lead-detail", args=(pk,)))
 
     context = {
         "object" : object,
@@ -95,7 +72,7 @@ def lead_delete_view(request, pk):
     object = get_object_or_404(Lead, id = pk)
     if request.method == "POST":
         object.delete()
-        return redirect("/leads")
+        return redirect(reverse("leads:lead-list", args=()))
     context = {
         "object" : object
     }
