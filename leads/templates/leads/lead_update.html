@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h3>Update Lead : {{object}}</h3>
     <form action="." method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+{% endblock content %}

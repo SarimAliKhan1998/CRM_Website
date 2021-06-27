@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM</title>
-</head>
-<body>
-    <style>
-        .leads{
-            padding: 10px;
-        }
-    </style>
+{% extends "base.html" %}
 
+{% block content %}
     <p>Do you want to add a new lead?</p>
     <p><a href="{% url 'leads:lead-create' %}">Yes</a></p>
     <h3>List of Available Leads</h3>
     <p>
-        <ul>
-            {%for lead in leads%}
-                <li class="leads">
-                    <a href="{% url 'leads:lead-detail' lead.pk %}">
-                        {{lead.first_name}} {{lead.last_name}}
-                    </a>
-                </li>
-            {%endfor%}
-        </ul>
+    <ul>
+        {%for lead in leads %}
+        <li class="leads">
+            <a href="{% url 'leads:lead-detail' lead.pk %}">
+                {{lead.first_name}} {{lead.last_name}}
+            </a>
+        </li>
+        {%endfor%}
+    </ul>
     </p>
-</body>
-</html>
+{% endblock content %}
