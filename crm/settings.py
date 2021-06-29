@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'leads'
+    'leads',
+    'pages',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,4 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'leads.User'      # gotta declare this in order to create our custom user model
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

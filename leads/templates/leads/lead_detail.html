@@ -8,12 +8,12 @@
     {{object.first_name}} {{object.last_name}}
     <div>Age : {{object.age}}</div>
     <div>This lead is handled by {{object.agent}}</div>
+    <hr>
     <p>
         <a href="{% url 'leads:lead-update' object.pk %}">
         Click here to update lead details
         </a>
     </p>
-
     <p>
         <a href="{% url 'leads:lead-delete' object.pk %}">Click here to delete all records of {{object}}</a>
     </p>

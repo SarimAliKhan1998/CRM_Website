@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from pages.views import landing_page_view
 
 # from leads.views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path("", landing_page_view, name = "landing-view"),
     
     path('leads/', include('leads.urls', namespace='leads'))
 ]
