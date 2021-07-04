@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Update Lead : {{object}}</h3>
+    <form action="." method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock content %}

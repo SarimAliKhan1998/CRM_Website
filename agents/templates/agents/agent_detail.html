@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h4>Agent details</h4>
+
+    {{object.user.username}}
+    <div>This agent is affliated to <strong>{{object.organisation}}</strong></div>
+    <hr>
+    <p>
+        <a href="{% url 'agents:agent-update' object.pk %}">
+        Click here to update agent details
+        </a>
+    </p>
+    <p>
+        <a href="{% url 'agents:agent-delete' object.pk %}">Click here to delete all records of {{object}}</a>
+    </p>
+    <p>
+        <a href="{% url 'agents:agent-list' %}">Go Back</a>
+    </p>
+
+
+{% endblock content %}
+

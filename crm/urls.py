@@ -30,7 +30,8 @@ urlpatterns = [
     path("logout/",LogoutView.as_view(), name = "logout"),
     path("signup/", SignupView.as_view(), name = "signup"),
     
-    path('leads/', include('leads.urls', namespace='leads'))
+    path('leads/', include('leads.urls', namespace='leads')),
+    path('agents/',include('agents.urls', namespace='agents')),
 ]
 
 

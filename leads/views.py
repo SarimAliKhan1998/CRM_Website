@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lead
 from .forms import LeadModelForm
 from django.urls import reverse
@@ -6,7 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 
 
-class LeadListView(ListView):
+class LeadListView(LoginRequiredMixin, ListView):
     template_name = "leads/lead_list.html"
     queryset = Lead.objects.all()
     context_object_name = "leads"               # "object_list" by default
@@ -14,7 +15,7 @@ class LeadListView(ListView):
 
 
 
-class LeadDetailView(DetailView):
+class LeadDetailView(LoginRequiredMixin, DetailView):
     template_name = "leads/lead_detail.html"
     queryset = Lead.objects.all()
     context_object_name = "object"
@@ -22,7 +23,7 @@ class LeadDetailView(DetailView):
 
 
 
-class LeadCreateView(CreateView):
+class LeadCreateView(LoginRequiredMixin, CreateView):
     template_name = "leads/lead_create.html"
     form_class = LeadModelForm
     # context_object_name = "form"
@@ -42,7 +43,7 @@ class LeadCreateView(CreateView):
 
 
 
-class LeadUpdateView(UpdateView):
+class LeadUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "leads/lead_update.html"
     form_class = LeadModelForm
     queryset = Lead.objects.all()
@@ -53,7 +54,7 @@ class LeadUpdateView(UpdateView):
 
 
 
-class LeadDeleteView(DeleteView):
+class LeadDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "leads/lead_delete.html"
     context_object_name = "object"
     queryset = Lead.objects.all()
