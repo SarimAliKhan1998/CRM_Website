@@ -5,8 +5,9 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    pass
-# inheriting the defined user model in django to create our own custom user model
+    is_organizer = models.BooleanField(default=True)
+    is_agent = models.BooleanField(default= False)
+
 
 
 class UserProfile(models.Model):

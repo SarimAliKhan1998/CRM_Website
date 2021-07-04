@@ -3,10 +3,13 @@
 {% block content %}
 
 <section class="text-gray-600 body-font">
+    {% if request.user.is_organizer %}
+      
     <div class = "text-2xl">
     <p>Do you want to add a new lead?
     <a href="{% url 'leads:lead-create' %}" class="text-black hover:text-blue-500">Yes</a></p>
-</div>
+    {% endif %}
+    </div>
     <div class="container px-5 py-7 mx-auto flex flex-wrap">
             <h2 class = "py-2 text-3xl">List of Available Leads</h2>
 

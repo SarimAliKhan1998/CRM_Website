@@ -9,14 +9,17 @@
     <div>Age : {{object.age}}</div>
     <div>This lead is handled by {{object.agent}}</div>
     <hr>
-    <p>
-        <a href="{% url 'leads:lead-update' object.pk %}">
-        Click here to update lead details
-        </a>
-    </p>
-    <p>
-        <a href="{% url 'leads:lead-delete' object.pk %}">Click here to delete all records of {{object}}</a>
-    </p>
+    {% if request.user.is_organizer %}
+      
+        <p>
+            <a href="{% url 'leads:lead-update' object.pk %}">
+            Click here to update lead details
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'leads:lead-delete' object.pk %}">Click here to delete all records of {{object}}</a>
+        </p>
+    {% endif %}
     <p>
         <a href="{% url 'leads:lead-list' %}">Go Back</a>
     </p>

@@ -4,6 +4,7 @@ from .models import Lead
 from .forms import LeadModelForm
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from agents.mixins import LoginAndOrganizerRequiredMixin
 
 
 
@@ -23,7 +24,7 @@ class LeadDetailView(LoginRequiredMixin, DetailView):
 
 
 
-class LeadCreateView(LoginRequiredMixin, CreateView):
+class LeadCreateView(LoginAndOrganizerRequiredMixin, CreateView):
     template_name = "leads/lead_create.html"
     form_class = LeadModelForm
     # context_object_name = "form"
@@ -43,7 +44,7 @@ class LeadCreateView(LoginRequiredMixin, CreateView):
 
 
 
-class LeadUpdateView(LoginRequiredMixin, UpdateView):
+class LeadUpdateView(LoginAndOrganizerRequiredMixin, UpdateView):
     template_name = "leads/lead_update.html"
     form_class = LeadModelForm
     queryset = Lead.objects.all()
@@ -54,7 +55,7 @@ class LeadUpdateView(LoginRequiredMixin, UpdateView):
 
 
 
-class LeadDeleteView(LoginRequiredMixin, DeleteView):
+class LeadDeleteView(LoginAndOrganizerRequiredMixin, DeleteView):
     template_name = "leads/lead_delete.html"
     context_object_name = "object"
     queryset = Lead.objects.all()
