@@ -4,7 +4,7 @@ from django.shortcuts import reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import LoginAndOrganizerRequiredMixin
-from leads.models import Agent
+from leads.models import Agent, Lead
 from .forms import AgentModelForm
 import random
 
@@ -57,6 +57,15 @@ class AgentDetailView(LoginAndOrganizerRequiredMixin, DetailView):
     def get_queryset(self):
         agent_organisation = self.request.user.userprofile
         return Agent.objects.filter(organisation = agent_organisation)
+
+    def get_context_data(self, **kwargs):
+        context = super(AgentDetailView, self).get_context_data(**kwargs)
+        user = self.request.user  
+        if user.is_organizer:
+            queryset = Lead.objects.filter(agent__id = self.object.id).order_by('first_name')
+            context.update({"agent_leads" : queryset})
+
+        return context
 
 
 class AgentUpdateView(LoginAndOrganizerRequiredMixin, UpdateView):
