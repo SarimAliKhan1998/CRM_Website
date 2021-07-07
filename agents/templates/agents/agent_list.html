@@ -7,8 +7,8 @@
     <p>Do you want to add a new agent?
     <a href="{% url 'agents:agent-create' %}" class="text-black hover:text-blue-500">Yes</a></p>
 </div>
+<h2 class = "py-2 text-3xl">Agents</h2>
     <div class="container px-5 py-7 mx-auto flex flex-wrap">
-            <h2 class = "py-2 text-3xl">Agents</h2>
 
         <div class="flex flex-wrap -m-4">
             {% for agent in agents %}
