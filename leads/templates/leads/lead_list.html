@@ -32,7 +32,9 @@
                                 {{lead.first_name}} {{lead.last_name}}
                             </a>
                         </h2>
+                        {% if request.user.is_organizer %}                    
                         <p class="leading-relaxed text-base">{{lead.agent}}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -62,7 +64,7 @@
                             <a href="{% url 'leads:lead-detail' lead.pk %}">
                                 {{lead.first_name}} {{lead.last_name}}
                             </a>
-                        </h2>
+                        </h2>          
                         <p class="leading-relaxed text-base">{{lead.agent}}</p>
                     </div>
                 </div>

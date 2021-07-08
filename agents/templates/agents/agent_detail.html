@@ -34,7 +34,6 @@
                             <tr>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Lead</th>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Age</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Category</th>
                             </tr>
                         </thead>
                         
@@ -43,7 +42,6 @@
                       <tr>
                         <td class="px-4 py-3"><a href="{% url 'leads:lead-detail' lead.pk %}">{{lead}}</a></td>
                         <td class="px-4 py-3">{{lead.age}}</td>
-                        <td class="px-4 py-3">{{lead.category}}</td>
                       </tr>
                       {% endfor %}
                       

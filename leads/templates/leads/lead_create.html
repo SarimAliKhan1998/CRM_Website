@@ -1,19 +1,22 @@
 
 {% extends "base.html" %}
 
+{% load tailwind_filters %}
+
 {% block content %}
 
-    <h1>Lead Creation Form</h1>
-
+<div class = "max-w-lg mx-auto">
+    <h1 class = "text-4xl pb-6">Lead Creation Form</h1>
     <form action="." method = "POST"> 
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="Submit" id="">
+        {{form | crispy}}
+        <input class = "w-full text-white bg-blue-500 hover:bg-blue-600 py-1 rounded-md" type="Submit" id="">
     </form>
-    <p>
-        <a href="{% url 'leads:lead-list' %}">Go Back</a>
+    <p class = "mt-5 py-2 border-t border-black-600">
+        <a class = "hover:text-blue-600" href="{% url 'leads:lead-list' %}">Go Back to Leads</a>
     </p>
 
+</div>
 
 {% endblock content %}
 

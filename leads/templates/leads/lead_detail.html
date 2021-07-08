@@ -10,7 +10,7 @@
     <div>This lead is handled by {{object.agent}}</div>
     <hr>
     {% if request.user.is_organizer %}
-      
+    <div>    
         <p>
             <a href="{% url 'leads:lead-update' object.pk %}">
             Click here to update lead details
@@ -24,6 +24,7 @@
         <a href="{% url 'leads:lead-list' %}">Go Back</a>
     </p>
 
+    </div>
 
 {% endblock content %}
 
